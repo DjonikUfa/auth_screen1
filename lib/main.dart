@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,17 +23,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
             body: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/hudson.jpg"),
+                  fit: BoxFit.cover
+                )
+              ),
               width: double.infinity,
-              child: Column(children: [
-                SizedBox(height: 60),
-                SizedBox(width: 110, height: 84, child: Placeholder(),),
-                SizedBox(height: 20),
-                Text('Введите логин в виде 10 цифр номера телефона',
-                  style: TextStyle(fontSize:16, color: Color.fromRGBO(0, 0, 0, 0.6)),
-                ),
-                SizedBox(height: 20),
-                const SizedBox(width: 224,
-                  child: TextField(
+              padding:EdgeInsets.symmetric(horizontal: 60),// отступы от края экрана
+              child: SingleChildScrollView( //растяжение, сколлинг
+                child: Column(children: [
+                  SizedBox(height: 80),
+                  const SizedBox(width: 150, height: 120, child: Image(image:AssetImage('assets/dart-logo.png')),),
+                  SizedBox(height: 50),
+                  Text('Введите логин в виде 10 цифр номера телефона',
+                    style: TextStyle(fontSize:16, color: Color(0xFFB2FF59).withOpacity(1.0)),
+                  ),
+                  SizedBox(height: 20),
+                  TextField(
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xFFeceff1),
@@ -41,10 +50,8 @@ class MyApp extends StatelessWidget {
                       labelText: 'Телефон',
                     ),
                   ),
-                ),
-                SizedBox(height: 20),
-                const SizedBox(width: 224,
-                  child: TextField(
+                  SizedBox(height: 20),
+                  TextField(
                     obscureText: true,
                     decoration: InputDecoration(
                       filled: true,
@@ -54,25 +61,26 @@ class MyApp extends StatelessWidget {
                       labelText: 'Пароль',
                     ),
                   ),
-                ),
-                SizedBox(height: 28),
-                SizedBox(width: 154, height: 42, child:
-                  ElevatedButton(onPressed: () {}, child: Text('Войти'),
-                    style: ElevatedButton.styleFrom (
-                      primary: Color(0xFF0079D0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(22.0),
-                        ),
+                  SizedBox(height: 28),
+                  SizedBox(width: 154, height: 42, child:
+                    ElevatedButton(onPressed: () {}, child: Text('Войти'),
+                      style: ElevatedButton.styleFrom (
+                        primary: Color(0xFF0079D0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22.0),
+                          ),
+                      ),
                     ),
                   ),
+                  SizedBox(height: 15),
+                  InkWell(child: const Text('Регистрация', style: LinkTextStyle),
+                      onTap: () {}),
+                  SizedBox(height: 16),
+                  InkWell(child: const Text('Забыли пароль?', style: LinkTextStyle),
+                      onTap: () {}),
+                  SizedBox(height: 170),
+                ],
                 ),
-                SizedBox(height: 15),
-                InkWell(child: const Text('Регистрация', style: LinkTextStyle),
-                    onTap: () {}),
-                SizedBox(height: 16),
-                InkWell(child: const Text('Забыли пароль?', style: LinkTextStyle),
-                    onTap: () {}),
-              ],
               ),
         )
         )
